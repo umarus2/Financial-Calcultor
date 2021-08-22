@@ -1,7 +1,9 @@
 <html>
 <head>
 <style>
-
+body {
+    font: normal 24px Verdana, Arial, sans-serif;
+}
 input
 {
     font-size:24px;
@@ -9,14 +11,17 @@ input
 }
 
 
-	.buttons {
+	.tables {
         //width: 50%;
         //table-layout: fixed;
         border-collapse: collapse;
+
+
   }
 
 
-    .buttons button {
+
+    .tables button {
 	  width: 100%;
 	  background-color: #4CAF50;
 	  border: none;
@@ -94,6 +99,40 @@ function calcFv(x,i,n,m) {
 	document.getElementById("FvInp").value = Math.round (Fv*100)/100
 }
 
+function calcx(Pv, Fv,i,n,m) {
+  Pv = +document.getElementById("PvInp").value;
+  Fv = +document.getElementById("FvInp").value;
+	i = (+document.getElementById("iInp").value)/100;
+	n = +document.getElementById("nInp").value;
+	m = +document.getElementById("mInp").value;
+
+  if (document.getElementById("PvRad").checked) {
+    x = Pv*(i/m) / (1-Math.pow(1+i/m,-1*n))
+  }
+  else {
+    x = Fv*(i/m) / (Math.pow(1+i/m,n)-1)
+  }
+
+	document.getElementById("xInp").value = Math.round (x*100)/100
+}
+
+function calcn(Pv, Fv,i,n,m) {
+  Pv = +document.getElementById("PvInp").value;
+  Fv = +document.getElementById("FvInp").value;
+	i = (+document.getElementById("iInp").value)/100;
+	x = +document.getElementById("xInp").value;
+	m = +document.getElementById("mInp").value;
+
+  if (document.getElementById("PvRad").checked) {
+    n = -1*(Math.log (1-Pv*(i/m)/x) / Math.log(1+i/m))
+  }
+  else {
+    n = Math.log (1+Fv*(i/m)/x) / Math.log(1+i/m)
+  }
+
+	document.getElementById("nInp").value = Math.round (n*100)/100
+}
+
 
 
 </script>
@@ -109,7 +148,8 @@ function calcFv(x,i,n,m) {
 
 <p></p>
 
-<table class=buttons id="myTable">
+
+<table class=tables id="myTable" >
   <tr>
     <td style="text-align:right">
 		    <input type="text" size ='10' id="PvInp">
@@ -134,7 +174,7 @@ function calcFv(x,i,n,m) {
 		<input type="text" size ='10' id="xInp" >
 	</td>
     <td>
-		<button type="button", id="xBtn">		regular Payment (x)		</button>
+		<button type="button", id="xBtn" onclick="calcx()">		regular Payment (x)		</button>
 	</td>
   </tr>
 
@@ -151,8 +191,8 @@ function calcFv(x,i,n,m) {
     <td style="text-align:right">
 		<input type="text" size ='9' id="iInp" size ="18" >%
 	</td>
-    <td>
-		<button type="button", id="iBtn">		interest rate p.a. (i)		</button>
+    <td align='center' >
+			interest rate p.a. (i)
 	</td>
   </tr>
 
@@ -161,13 +201,13 @@ function calcFv(x,i,n,m) {
 
 		<input type="text" size ='10' id="mInp" value ='12' >
 	</td>
-    <td>
-		<button type="button", id="mBtn", >		times compounded p. a. (m)		</button>
+    <td align='center'>
+		 times compounded p. a. (m)
 	</td>
   </tr>
 
 </table>
-
+<hr>
 
 
 </body>

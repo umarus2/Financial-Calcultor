@@ -88,7 +88,7 @@ function swapPF(){
 }
 
 
-function calcPv(x,i,n,m) {
+function calcPv(x, i, n, m) {
 	x = +document.getElementById("xInp").value;
 	i = (+document.getElementById("iInp").value)/100;
 	n = +document.getElementById("nInp").value;
@@ -97,7 +97,7 @@ function calcPv(x,i,n,m) {
 	document.getElementById("PvInp").value = Math.round (Pv*100)/100
 }
 
-function calcFv(x,i,n,m) {
+function calcFv(x, i, n, m) {
 	x = +document.getElementById("xInp").value;
 	i = (+document.getElementById("iInp").value)/100;
 	n = +document.getElementById("nInp").value;
@@ -106,7 +106,7 @@ function calcFv(x,i,n,m) {
 	document.getElementById("FvInp").value = Math.round (Fv*100)/100
 }
 
-function calcx(Pv, Fv,i,n,m) {
+function calcx(Pv, Fv, i, n, m) {
   Pv = +document.getElementById("PvInp").value;
   Fv = +document.getElementById("FvInp").value;
 	i = (+document.getElementById("iInp").value)/100;
@@ -123,7 +123,7 @@ function calcx(Pv, Fv,i,n,m) {
 	document.getElementById("xInp").value = Math.round (x*100)/100
 }
 
-function calcn(Pv, Fv,i,n,m) {
+function calcn(Pv, Fv, i, x, m) {
   Pv = +document.getElementById("PvInp").value;
   Fv = +document.getElementById("FvInp").value;
 	i = (+document.getElementById("iInp").value)/100;
@@ -138,6 +138,10 @@ function calcn(Pv, Fv,i,n,m) {
   }
 
 	document.getElementById("nInp").value = Math.round (n*100)/100
+}
+
+function calcOB(Pv, x, i, n,m){
+
 }
 
 

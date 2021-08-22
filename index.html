@@ -42,7 +42,7 @@ input
 
 <h2>Financial Calculator</h2>
 
-<table class=buttons id="myTable">
+
 <script>
 var Fv, Pv, x, i, n, m;
 
@@ -53,6 +53,7 @@ function calcPv(x,i,n,m) {
 	m = +document.getElementById("mInp").value;
 	Pv = x*(1-Math.pow(1+i/m,-1*n)) / (i/m)
 	document.getElementById("PvInp").value = Math.round (Pv*100)/100
+}
 
 function calcFv(x,i,n,m) {
 	x = +document.getElementById("xInp").value;
@@ -65,22 +66,25 @@ function calcFv(x,i,n,m) {
 
 </script>
 
+
+<table class=buttons id="myTable">
   <tr>
     <td style="text-align:right">
-		<input type="text" size ='10' id="PvInp" >
+		    <input type="text" size ='10' id="PvInp" >
 	  </td>
     <td>
-		<button type="button", id="PvBtn" onclick="calcPv()">		Present Value (P)		</button>
+		    <button type="button", id="PvBtn" onclick="calcPv()">		Present Value (P)		</button>
 	  </td>
   </tr>
 
+
   <tr>
-    <tdstyle="text-align:right">
+    <td style="text-align:right">
 		<input type="text" size ='10' id="FvInp" >
-	</td>
+	  </td>
     <td>
-		<button type="button", id="FvBtn" onclick="calcFv()">		Future Value (F)		</button>
-	</td>
+		    <button type="button", id="FvBtn" onclick="calcFv()">		Future Value (F)		</button>
+	  </td>
   </tr>
 
   <tr>

@@ -162,9 +162,7 @@ function calcn(Pv, Fv, i, x, m) {
 	document.getElementById("nInp").value = Math.round (n*100)/100
 }
 
-function calcOB(Pv, x, i, n,m){
 
-}
 
 function calcAComp(PComp,i,n,m){
   PComp=+document.getElementById("PCompInp").value;
@@ -189,7 +187,7 @@ function calciComp(PComp,AComp,n,m){
   PComp=+document.getElementById("PCompInp").value;
   n=+document.getElementById("nCompInp").value;
   m=+document.getElementById("mCompInp").value;
-  i= Math.pow(AComp/PComp,1/(n*m))-1;
+  i= m*(Math.pow(AComp/PComp,1/(n*m))-1);
   document.getElementById("iCompInp").value = Math.round (i*10000)/100
 }
 

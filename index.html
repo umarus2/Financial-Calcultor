@@ -13,10 +13,7 @@ input
         //width: 60%;
         table-layout: fixed;
         border-collapse: collapse;
-
-
-    }
-
+  }
 
 
     .buttons button {
@@ -34,6 +31,15 @@ input
     }
 
 
+    button[disabled]{
+      //border: 1px
+      solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+
+
+
 
 </style>
 </head>
@@ -43,7 +49,12 @@ input
 <h2>Financial Calculator</h2>
 
 
+
 <script>
+
+
+
+
 var Fv, Pv, x, i, n, m;
 
 function calcPv(x,i,n,m) {
@@ -64,9 +75,18 @@ function calcFv(x,i,n,m) {
 	document.getElementById("FvInp").value = Math.round (Fv*100)/100
 }
 
+
 </script>
 
 
+<form action="/action_page.php">
+
+  <input type="radio" id="radPv" name="PorF" value="Pv" checked='yes'>
+  <label for="html">Loan / Bond</label><br>
+  <input type="radio" id="radFv" name="PorF" value="Fv">
+  <label for="css">Savings / Sinking Fund</label><br>
+
+<p></p>
 <table class=buttons id="myTable">
   <tr>
     <td style="text-align:right">
@@ -80,10 +100,10 @@ function calcFv(x,i,n,m) {
 
   <tr>
     <td style="text-align:right">
-		<input type="text" size ='10' id="FvInp" >
+		<input type="text" size ='10' id="FvInp" disabled='true'>
 	  </td>
     <td>
-		    <button type="button", id="FvBtn" onclick="calcFv()">		Future Value (F)		</button>
+		    <button type="button", id="FvBtn" onclick="calcFv()" disabled='true'>		Future Value (F)		</button>
 	  </td>
   </tr>
 

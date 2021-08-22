@@ -202,6 +202,18 @@ function calcnComp(PComp,AComp,i,m){
   document.getElementById("nCompInp").value = Math.round (n*100)/100
 }
 
+function calcOB(Pv,x,i,n,m){
+  Pv = +document.getElementById("PvInp").value;
+  x = +document.getElementById("xInp").value;
+	i = (+document.getElementById("iInp").value)/100;
+	n = +document.getElementById("OBnInp").value;
+	m = +document.getElementById("mInp").value;
+  AOB=Pv*Math.pow((1+i/m),n);
+  FOB=x*(Math.pow(1+i/m,n)-1) / (i/m);
+  OB=AOB-FOB;
+  document.getElementById("OBInp").value = Math.round (OB*100)/100
+}
+
 </script>
 
 
@@ -303,6 +315,7 @@ function calcnComp(PComp,AComp,i,m){
 <hr>
 <br>
 <h2>Compound Interest</h2>
+
 <table class=tableComp id="PF_Table" >
   <tr>
     <td style="text-align:right">

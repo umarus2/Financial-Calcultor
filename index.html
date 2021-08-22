@@ -69,13 +69,20 @@ function swapPF(){
 
     document.getElementById('PvBtn').disabled=false;
     document.getElementById('FvBtn').disabled=true;
+    document.getElementById('OBBtn').disabled=false;
     document.getElementById('PvInp').disabled=false;
     document.getElementById('FvInp').disabled=true;
+    document.getElementById('OBInp').disabled=false;
+    document.getElementById('OBnInp').disabled=false;
+
   }
   else{
     document.getElementById('FvBtn').disabled=false;
+    document.getElementById('OBBtn').disabled=true;
     document.getElementById('PvBtn').disabled=true;
     document.getElementById('FvInp').disabled=false;
+    document.getElementById('OBInp').disabled=true;
+    document.getElementById('OBnInp').disabled=true;
     document.getElementById('PvInp').disabled=true;
   }
 }
@@ -149,7 +156,7 @@ function calcn(Pv, Fv,i,n,m) {
 <p></p>
 
 
-<table class=tables id="myTable" >
+<table class=tables id="PF_Table" >
   <tr>
     <td style="text-align:right">
 		    <input type="text" size ='10' id="PvInp">
@@ -183,13 +190,13 @@ function calcn(Pv, Fv,i,n,m) {
 		<input  type="text" size ='10' id="nInp" >
 	</td>
     <td>
-		<button type="button", id="nBtn">		number of Payments (n)		</button>
+		<button type="button", id="nBtn" onclick="calcn()">		number of Payments (n)		</button>
 	</td>
   </tr>
 
   <tr>
     <td style="text-align:right">
-		<input type="text" size ='9' id="iInp" size ="18" >%
+		<input type="text" size ='8' id="iInp" size ="18" >%
 	</td>
     <td align='center' >
 			interest rate p.a. (i)
@@ -205,6 +212,32 @@ function calcn(Pv, Fv,i,n,m) {
 		 times compounded p. a. (m)
 	</td>
   </tr>
+</table>
+
+<br>
+
+<table class=tables id="OB_Table" >
+  <tr>
+    <td style="text-align:right">
+
+    After <input type="text" size ='3' id="OBnInp" >
+  </td>
+    <td align='left'>
+     payments
+  </td>
+  </tr>
+
+  <tr>
+    <td>
+      <button type="button", id="OBBtn" onclick="calcOB()" >		Outstanding Balance:	</button>
+  </td>
+
+      <td style="text-align:right">
+      <input type="text" size ='9' id="OBInp" size ="18" >
+  </td>
+  </tr>
+
+
 
 </table>
 <hr>

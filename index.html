@@ -55,6 +55,28 @@ input
   	  cursor: pointer;
     }
 
+    .tableConv {
+            //width: 50%;
+            //table-layout: fixed;
+            border-collapse: collapse;
+    }
+
+
+
+      .tableConv button {
+        width: 100%;
+        background-color: #f44336;
+        border: none;
+        color: white;
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
 
     button[disabled]{
       //border: 1px
@@ -351,6 +373,63 @@ function calcOB(Pv,x,i,n,m){
 	</td>
   </tr>
 </table>
+
+<br>
+<hr>
+<br>
+<h2>Interest Rate Conversion</h2>
+
+<table class=tableConv id="Conv_Table" >
+  <tr>
+    <td style="text-align:right">
+		    <input type="text" size ='2' id="iEffInp">
+	  </td>
+    <td>
+		    <button type="button", id="iEffBtn" onclick="">		Effective rate (i eff)		</button>
+	  </td>
+  </tr>
+
+
+  <tr>
+    <td style="text-align:right">
+		<input type="text" size ='10' id="ACompInp" >
+	  </td>
+    <td>
+		    <button type="button", id="ACompBtn" onclick="" >		Accumulated Amount (A)		</button>
+	  </td>
+  </tr>
+
+  <tr>
+    <td style="text-align:right">
+		<input type="text" size ='8' id="iCompInp" >%
+	</td>
+    <td>
+		<button type="button", id="iCompBtn" onclick="">		interest rate p.a. (i)		</button>
+	</td>
+  </tr>
+
+  <tr>
+    <td style="text-align:right">
+		<input  type="text" size ='10' id="nCompInp" >
+	</td>
+    <td>
+		<button type="button", id="nCompBtn" onclick="">		number of years (n)		</button>
+	</td>
+  </tr>
+
+
+
+  <tr>
+    <td style="text-align:right">
+
+		<input type="text" size ='10' id="mCompInp" value ='1' >
+	</td>
+    <td align='center'>
+		 times compounded p. a. (m)
+	</td>
+  </tr>
+</table>
+
 
 </body>
 </html>

@@ -83,8 +83,17 @@ input
 
 
 
-var Fv, Pv, x, i, n, m;
+//var Fv, Pv, x, i, n, m;
 
+function getValuesPF(){
+  Pv = +document.getElementById("PvInp").value;
+  Fv = +document.getElementById("FvInp").value;
+  x = +document.getElementById("xInp").value;
+	i = (+document.getElementById("iInp").value)/100;
+	n = +document.getElementById("nInp").value;
+	m = +document.getElementById("mInp").value;
+  return [Pv, Fv, x, i, n, m]
+}
 
 function swapPF(){
   if (document.getElementById('PvRad').checked){
@@ -110,30 +119,20 @@ function swapPF(){
 }
 
 
-function calcPv(x, i, n, m) {
-	x = +document.getElementById("xInp").value;
-	i = (+document.getElementById("iInp").value)/100;
-	n = +document.getElementById("nInp").value;
-	m = +document.getElementById("mInp").value;
+function calcPv() {
+  [Pv, Fv, x, i, n, m] = getValuesPF()
 	Pv = x*(1-Math.pow(1+i/m,-1*n)) / (i/m)
 	document.getElementById("PvInp").value = Math.round (Pv*100)/100
 }
 
 function calcFv(x, i, n, m) {
-	x = +document.getElementById("xInp").value;
-	i = (+document.getElementById("iInp").value)/100;
-	n = +document.getElementById("nInp").value;
-	m = +document.getElementById("mInp").value;
+	[Pv, Fv, x, i, n, m] = getValuesPF()
 	Fv = x*(Math.pow(1+i/m,n)-1) / (i/m)
 	document.getElementById("FvInp").value = Math.round (Fv*100)/100
 }
 
 function calcx(Pv, Fv, i, n, m) {
-  Pv = +document.getElementById("PvInp").value;
-  Fv = +document.getElementById("FvInp").value;
-	i = (+document.getElementById("iInp").value)/100;
-	n = +document.getElementById("nInp").value;
-	m = +document.getElementById("mInp").value;
+  [Pv, Fv, x, i, n, m] = getValuesPF()
 
   if (document.getElementById("PvRad").checked) {
     x = Pv*(i/m) / (1-Math.pow(1+i/m,-1*n))
@@ -146,11 +145,7 @@ function calcx(Pv, Fv, i, n, m) {
 }
 
 function calcn(Pv, Fv, i, x, m) {
-  Pv = +document.getElementById("PvInp").value;
-  Fv = +document.getElementById("FvInp").value;
-	i = (+document.getElementById("iInp").value)/100;
-	x = +document.getElementById("xInp").value;
-	m = +document.getElementById("mInp").value;
+  [Pv, Fv, x, i, n, m] = getValuesPF()
 
   if (document.getElementById("PvRad").checked) {
     n = -1*(Math.log (1-Pv*(i/m)/x) / Math.log(1+i/m))
@@ -162,51 +157,42 @@ function calcn(Pv, Fv, i, x, m) {
 	document.getElementById("nInp").value = Math.round (n*100)/100
 }
 
-
-
-function calcAComp(PComp,i,n,m){
+function getValuesComp(){
+  AComp=+document.getElementById("ACompInp").value;
   PComp=+document.getElementById("PCompInp").value;
   i=(+document.getElementById("iCompInp").value)/100;
   n=+document.getElementById("nCompInp").value;
   m=+document.getElementById("mCompInp").value;
+  return [AComp, PComp, i, n, m]
+}
+
+function calcAComp(PComp,i,n,m){
+  [AComp, PComp, i, n, m]=getValuesComp();
   AComp=PComp*Math.pow((1+i/m),n*m);
   document.getElementById("ACompInp").value = Math.round (AComp*100)/100
 }
 
 function calcPComp(PComp,i,n,m){
-  AComp=+document.getElementById("ACompInp").value;
-  i=(+document.getElementById("iCompInp").value)/100;
-  n=+document.getElementById("nCompInp").value;
-  m=+document.getElementById("mCompInp").value;
+  [AComp, PComp, i, n, m]=getValuesComp();
   PComp=AComp/Math.pow((1+i/m),n*m);
   document.getElementById("PCompInp").value = Math.round (PComp*100)/100
 }
 
 function calciComp(PComp,AComp,n,m){
-  AComp=+document.getElementById("ACompInp").value;
-  PComp=+document.getElementById("PCompInp").value;
-  n=+document.getElementById("nCompInp").value;
-  m=+document.getElementById("mCompInp").value;
+  [AComp, PComp, i, n, m]=getValuesComp();
   i= m*(Math.pow(AComp/PComp,1/(n*m))-1);
   document.getElementById("iCompInp").value = Math.round (i*10000)/100
 }
 
 function calcnComp(PComp,AComp,i,m){
-  AComp=+document.getElementById("ACompInp").value;
-  PComp=+document.getElementById("PCompInp").value;
-  i=(+document.getElementById("iCompInp").value)/100;
-  m=+document.getElementById("mCompInp").value;
-  n= (Math.log(AComp/PComp)/Math.log(1+i/m))/m;
+  [AComp, PComp, i, n, m]=getValuesComp();
   document.getElementById("nCompInp").value = Math.round (n*100)/100
 }
 
 function calcOB(Pv,x,i,n,m){
-  Pv = +document.getElementById("PvInp").value;
-  x = +document.getElementById("xInp").value;
-	i = (+document.getElementById("iInp").value)/100;
+  [Pv, Fv, x, i, n, m] = getValuesPF()
 	n = +document.getElementById("OBnInp").value;
-	m = +document.getElementById("mInp").value;
-  AOB=Pv*Math.pow((1+i/m),n);
+	AOB=Pv*Math.pow((1+i/m),n);
   FOB=x*(Math.pow(1+i/m,n)-1) / (i/m);
   OB=AOB-FOB;
   document.getElementById("OBInp").value = Math.round (OB*100)/100

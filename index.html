@@ -220,6 +220,31 @@ function calcOB(Pv,x,i,n,m){
   document.getElementById("OBInp").value = Math.round (OB*100)/100
 }
 
+function getValuesConv(){
+
+  iEff=(+document.getElementById("iEffInp").value)/100;
+  iNom=(+document.getElementById("iNomInp").value)/100;
+
+  mEff=+document.getElementById("mEffInp").value;
+  mNom=+document.getElementById("mNomInp").value;
+  return [iEff, iNom, mEff, mNom]
+}
+
+function calciEff(){
+  [iEff, iNom, mEff, mNom]=getValuesConv();
+  i=Math.pow(1+iNom/mNom,mNom)-1; //here i is real yearly interst rate
+  iEff=mEff*(Math.pow(1+i,1/mEff)-1);
+  document.getElementById("iEffInp").value = Math.round (iEff*10000)/100
+}
+
+function calciNom(){
+  [iEff, iNom, mEff, mNom]=getValuesConv();
+  i=Math.pow(1+iEff/mEff,mEff)-1; //here i is real yearly interst rate
+  iNom=mNom*(Math.pow(1+i,1/mNom)-1);
+  document.getElementById("iNomInp").value = Math.round (iNom*10000)/100
+}
+
+
 </script>
 
 
@@ -382,47 +407,38 @@ function calcOB(Pv,x,i,n,m){
 <table class=tableConv id="Conv_Table" >
   <tr>
     <td style="text-align:right">
-		    <input type="text" size ='2' id="iEffInp">
+		    <input type="text" size ='2' id="iEffInp" >%
 	  </td>
     <td>
-		    <button type="button", id="iEffBtn" onclick="">		Effective rate (i eff)		</button>
+		    <button type="button", id="iEffBtn" onclick="calciEff()">		Effective rate (i eff)		</button>
 	  </td>
   </tr>
 
 
   <tr>
     <td style="text-align:right">
-		<input type="text" size ='10' id="ACompInp" >
+		<input type="text" size ='3' id="mEffInp" value ='1'>
 	  </td>
-    <td>
-		    <button type="button", id="ACompBtn" onclick="" >		Accumulated Amount (A)		</button>
+    <td align='center'>
+		 times compounded p. a. (m)
 	  </td>
   </tr>
 
   <tr>
     <td style="text-align:right">
-		<input type="text" size ='8' id="iCompInp" >%
+		<input type="text" size ='2' id="iNomInp" >%
 	</td>
+
+
     <td>
-		<button type="button", id="iCompBtn" onclick="">		interest rate p.a. (i)		</button>
+		<button type="button", id="iNomBtn" onclick="calciNom()">		Nominal rate p.a. (i nom)		</button>
 	</td>
   </tr>
 
   <tr>
     <td style="text-align:right">
-		<input  type="text" size ='10' id="nCompInp" >
-	</td>
-    <td>
-		<button type="button", id="nCompBtn" onclick="">		number of years (n)		</button>
-	</td>
-  </tr>
 
-
-
-  <tr>
-    <td style="text-align:right">
-
-		<input type="text" size ='10' id="mCompInp" value ='1' >
+		<input type="text" size ='3' id="mNomInp"  >
 	</td>
     <td align='center'>
 		 times compounded p. a. (m)

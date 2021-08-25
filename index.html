@@ -15,6 +15,8 @@ input
         //width: 50%;
         //table-layout: fixed;
         border-collapse: collapse;
+
+
 }
 
 
@@ -283,36 +285,40 @@ function calciNom(){
     <td style="text-align:right">
 		<input type="text" size ='10' id="xInp" >
 	</td>
-    <td>
+  <td>
 		<button type="button", id="xBtn" onclick="calcx()">		regular Payment (x)		</button>
 	</td>
   </tr>
 
   <tr>
-    <td style="text-align:right">
+  <td style="text-align:right">
 		<input  type="text" size ='10' id="nInp" >
 	</td>
-    <td>
+  <td>
 		<button type="button", id="nBtn" onclick="calcn()">		number of Payments (n)		</button>
 	</td>
   </tr>
 
   <tr>
-    <td style="text-align:right">
+  <td style="text-align:right">
 		<input type="text" size ='8' id="iInp" size ="18" >%
 	</td>
-    <td align='center' >
-			interest rate p.a. (i)
+
+  <td align='center' color="red">
+
+		<button style="background-color:white; color:black" type="button", id="iBtn" disabled="yes" >	interest rate p.a. (i)</button>
+
 	</td>
   </tr>
 
-  <tr>
+
+    <tr>
     <td style="text-align:right">
 
 		<input type="text" size ='10' id="mInp" value ='12' >
 	</td>
     <td align='center'>
-		 times compounded p. a. (m)
+		 <button style="background-color:white; color:black" type="button", id="mBtn" disabled="yes" >times compounded p. a. (m)</button>
 	</td>
   </tr>
 </table>
@@ -394,7 +400,7 @@ function calciNom(){
 		<input type="text" size ='10' id="mCompInp" value ='1' >
 	</td>
     <td align='center'>
-		 times compounded p. a. (m)
+		 <button style="background-color:white; color:black" type="button", id="mCompBtn" disabled="yes" > times compounded p. a. (m) </button>
 	</td>
   </tr>
 </table>
